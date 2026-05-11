@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: self-learning-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: self-learning
+  template:
+    metadata:
+      labels:
+        app: self-learning
+    spec:
+      containers:
+        - name: self-learning
+          image: self-learning:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
